@@ -1,17 +1,21 @@
 import sys
 import os 
-import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+from dotenv import load_dotenv
 
-print(sys.argv[1])
+load_dotenv()
+
 my_dir=sys.argv[1]
 
+parent_dir_path = os.getenv("FILEPATH")
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")
 
 
 #print("you successfully passed as an argument the name of the the directory", my_dir)
-parent_dir_path="/Users/adinaciubancan/Documents/MyProjects"
+#parent_dir_path="/Users/adinaciubancan/Documents/MyProjects"
 my_dir_path=os.path.join(parent_dir_path, my_dir)
 
 driver=webdriver.Chrome("/Users/adinaciubancan/Documents/chromedriver 2")
@@ -26,12 +30,12 @@ def makeproject():
    #selenium press button
    
    
-   username=driver.find_element_by_xpath('//*[@id="login_field"]')
+   user=driver.find_element_by_xpath('//*[@id="login_field"]')
    #button=browser.find_element_by_css_selector('login_field')
-   username.send_keys("tinidini")
+   user.send_keys("", username)
 
-   password=driver.find_element_by_xpath('//*[@id="password"]')
-   password.send_keys("")
+   passw=driver.find_element_by_xpath('//*[@id="password"]')
+   passw.send_keys("", password)
 
    signin=driver.find_element_by_xpath('//*[@id="login"]/div[4]/form/div/input[12]')
    signin.click()
@@ -49,7 +53,7 @@ def makeproject():
 
    print("Succesfully created repository {}".format(my_dir))
 
-   time.sleep(60)
-   driver.close();
+   time.sleep(5)
+   driver.close()
 if __name__ == "__main__":
     makeproject()

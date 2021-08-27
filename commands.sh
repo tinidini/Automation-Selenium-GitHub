@@ -8,14 +8,18 @@ function create()
 
     
     cd /Users/adinaciubancan/Documents/MyProjects/$fname
-    :'git init
-    git remote add origin https://github.com/tinidini/$fname.git
+    pwd
+
+    git init
+    git remote add origin https://github.com/tinidini/${fname}.git
     touch README.md
-    echo "Am scris in readme" > README.md
+    echo "Am scris in readme" >> README.md
+    git add *
     git commit -m "Initial commit"
     git push -u origin master
-    code.
-    '
+    
+    #code .
+    
 }
 
 "$@"
